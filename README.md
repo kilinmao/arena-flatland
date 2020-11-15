@@ -1,3 +1,33 @@
+## Installation
+1. Clone this repo
+````
+git clone 
+````
+
+2. Copy Install file and install forks
+````
+mv .rosinstall ../ 
+rosws update
+```` 
+
+3. Setup virtual environment to be able to use python3 with ros
+   ```
+    virtualenv <path_to_venv>/venv_p3 --python=python3
+    source <path_to_venv>/venv_p3/bin/activate
+    <path_to_venv>/venv_p3/bin/pip install \
+        pyyaml \
+        rospkg \
+        catkin_pkg \
+        exception \
+        numpy \
+        tensorflow=="1.13.1" \
+        gym \
+        pyquaternion \ 
+        mpi4py \
+        matplotlib
+        
+4. Activate venv and run python code ppo_train.py
+
 #Franklin's Note for girl's old repository:
 
 ### in folder: flatland
