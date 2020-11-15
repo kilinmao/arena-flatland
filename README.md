@@ -177,7 +177,7 @@ Note: To be able to load the pretrained agents, you need to install numpy versio
 
 
     
-### Franklin's notes for old repository:
+# Franklin's notes for old repository:
 
 ### in folder: flatland
 #### replace
