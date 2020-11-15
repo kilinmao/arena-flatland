@@ -1,0 +1,8 @@
+<library path="lib/librlLocalPlanner">
+  <class name="rl_local_planner/RLLocalPlanner" type="rl_local_planner::RLLocalPlanner" base_class_type="nav_core::BaseLocalPlanner">
+    <description>
+      An implementation of a local planner communicating with an rl-agent.
+    </description>
+  </class>
+</library>
+
