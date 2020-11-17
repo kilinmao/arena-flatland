@@ -9,6 +9,16 @@ Train DRL agents on ROS compatible simulations for autonomous navigation in high
 
 ## Installation
 0. Standart ROS setup (Code has been tested with ROS-melodic on Ubuntu 18.04) with catkin_ws
+```
+sudo apt-get update && apt-get install -y \
+libqt4-dev \
+libopencv-dev \
+liblua5.2-dev \
+screen \
+ros-melodic-tf2-geometry-msgs \
+ros-melodic-navigation \
+ros-melodic-rviz 
+```
 1. Clone this repo into your catkin_ws 
 ````
 mkdir -p catkin_ws/src
@@ -58,10 +68,12 @@ Install packages inside your venv:
    pip install pyyaml rospkg catkin_pkg  exception numpy tensorflow=="1.13.1"  gym   pyquaternion mpi4py  matplotlib
    ```     
    
-5. Install additional packages from drl_forks
+5. Install and build additional packages from drl_forks
 ```
 cd catkin_ws/src/drl_local_planner_forks/stable_baselines/ 
 pip install -e .
+cd $HOME/catkin_ws
+catkin_make
 ```
 
 6. Create folders for training results and eval data (you can follow the same structure as below)
