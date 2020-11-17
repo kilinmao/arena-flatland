@@ -15,19 +15,21 @@ mkdir -p catkin_ws/src
 cd catkin_ws && catkin_make
 cd src
 git clone https://github.com/ignc-research/arena-flatland
+cd arena-flatland
 ````
 
 2. Copy Install file and install forks
 ````
 mv .rosinstall ../ 
+cd ..
 rosws update
 ```` 
 
-3. Install virtual environment and wrapper on your local pc (without conda activated) to be able to use python3 with ros
+3. Install virtual environment and wrapper (as root or admin!) on your local pc (without conda activated) to be able to use python3 with ros
    ```
-    pip3 install — upgrade pip
-    pip3 install virtualenv
-    pip3 install virtualenvwrapper
+    sudo pip3 install — upgrade pip
+    sudo pip3 install virtualenv
+    sudo pip3 install virtualenvwrapper
     which virtualenv # should output /usr/local/bin/virtualenv  
     ```
 
@@ -53,29 +55,38 @@ workon arena-flatland-py3
 
 Install packages inside your venv:
 ```
-    virtualenv <path_to_venv>/venv_p3 --python=python3
-    source <path_to_venv>/venv_p3/bin/activate
-    <path_to_venv>/venv_p3/bin/pip install \
-        pyyaml \
-        rospkg \
-        catkin_pkg \
-        exception \
-        numpy \
-        tensorflow=="1.13.1" \
-        gym \
-        pyquaternion \ 
-        mpi4py \
-        matplotlib
+   pip install pyyaml rospkg catkin_pkg  exception numpy tensorflow=="1.13.1"  gym   pyquaternion mpi4py  matplotlib
    ```     
    
 5. Install additional packages from drl_forks
 ```
-cd <path_to_catkin_ws>/src/drl_local_planner_forks/stable_baselines/ 
-workon arenapy3 
+cd catkin_ws/src/drl_local_planner_forks/stable_baselines/ 
 pip install -e .
+```
+
+6. Create folders for training results and eval data (you can follow the same structure as below)
+```
+/catkin_ws/data
+/data/evaluation_data/train
+/data/evaluation_data/test
+/data/evaluation_data/evaluation_sets
+/catkin_ws/data/tensorboard_log_ppo_10
+/data/agents
+
 ```
 4. Set system-relevant variables 
     * Modify all relevant pathes rl_bringup/config/path_config.ini
+    ```
+    path_to_venv=/home/user/python_env/arena-flatland-py3/arena_py3
+   path_to_train_data=/home/user/code/catkin_ws/data
+   path_to_eval_data_train=/home/user/code/catkin_ws/data/evaluation_data/train
+   path_to_eval_data_test=/home/user/code/catkin_ws/data/evaluation_data/test
+   path_to_eval_sets=/home/user/code/catkin_ws/data/evaluation_data/evaluation_sets
+   path_to_catkin_ws=/home/user/code/catkin_ws/
+   path_to_tensorboard_log=/home/user/code/catkin_ws/data/tensorboard_log_ppo_10
+   path_to_models=/home/user/code/catkin_ws/data/agents
+   ros_version=melodic
+```
     
 5. Activate venv and run python code ppo_train.py
 
