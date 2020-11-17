@@ -11,7 +11,7 @@ Train DRL agents on ROS compatible simulations for autonomous navigation in high
 0. Standart ROS setup (Code has been tested with ROS-melodic on Ubuntu 18.04) with catkin_ws
 1. Clone this repo into your catkin_ws 
 ````
-mkdir -P catkin_ws/src
+mkdir -p catkin_ws/src
 cd catkin_ws && catkin_make
 cd src
 git clone https://github.com/ignc-research/arena-flatland
