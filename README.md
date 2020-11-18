@@ -65,12 +65,12 @@ workon arena-flatland-py3
 
 Install packages inside your venv:
 ```
-   pip install pyyaml rospkg catkin_pkg  exception numpy tensorflow=="1.13.1"  gym   pyquaternion mpi4py  matplotlib
+   pip3 install pyyaml rospkg catkin_pkg  exception numpy tensorflow=="1.13.1"  gym   pyquaternion mpi4py  matplotlib  netifaces
    ```     
    
 5. Install and build additional packages from drl_forks
 ```
-cd catkin_ws/src/drl_local_planner_forks/stable_baselines/ 
+cd drl_local_planner_forks/stable_baselines/ 
 pip install -e .
 cd $HOME/catkin_ws
 catkin_make
@@ -78,12 +78,8 @@ catkin_make
 
 6. Create folders for training results and eval data (you can follow the same structure as below)
 ```
-/catkin_ws/data
-/data/evaluation_data/train
-/data/evaluation_data/test
-/data/evaluation_data/evaluation_sets
-/catkin_ws/data/tensorboard_log_ppo_10
-/data/agents
+cd $HOME/catkin_ws
+mkdir -p data/{evaluation_data,tensorboard_log_ppo_10}/{train,test,evaluation_sets}    
 
 ```
 4. Set system-relevant variables 
@@ -117,7 +113,7 @@ catkin_make
     * Open third terminal (DRL-agent):
      ```
     source <path_to_venv>/bin/activate 
-    python rl_agent/scripts/train_scripts/train_ppo.py
+    python $HOME/catkin_ws/src/arena-flatland/rl_agent/scripts/train_scripts/train_ppo.py
     ```
     * Open fourth terminal (Visualization):
      ```
